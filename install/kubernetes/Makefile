@@ -1,10 +1,10 @@
 # Copyright Authors of Cilium
 # SPDX-License-Identifier: Apache-2.0
 
+include ../../Makefile.defs
+
 MAKEFILE_VALUES?=Makefile.values
 include $(MAKEFILE_VALUES)
-
-include ../../Makefile.defs
 
 ifeq ($(CILIUM_VERSION),)
 export CILIUM_VERSION:=v$(VERSION)

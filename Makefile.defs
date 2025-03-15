@@ -15,6 +15,12 @@ define newline
 
 endef
 
+# Set RELEASE=yes if branch has pattern vX.Y
+CURRENT_BRANCH := $(shell git rev-parse --abbrev-ref HEAD)
+ifeq ($(shell echo ${CURRENT_BRANCH} | grep -E '^v[0-9]+\.[0-9]+$$'),$(CURRENT_BRANCH))
+	RELEASE := "yes"
+endif
+
 ROOT_DIR := $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
 RELATIVE_DIR := $(shell echo $(realpath .) | sed "s;$(ROOT_DIR)[/]*;;")
 include $(ROOT_DIR)/Makefile.quiet
